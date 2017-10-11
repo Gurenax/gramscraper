@@ -44,7 +44,7 @@ end
 
 ## Rails (erb)
 ```ruby
-<% photos.each do |photo| =>
+<% photos.each do |photo| %>
     <%= image_tag photo[:standard_resolution] %>
     <%= image_tag photo[:low_resolution] %>
     <%= image_tag photo[:thumbnail] %>
