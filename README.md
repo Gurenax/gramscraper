@@ -19,16 +19,16 @@ require('gramscraper')
 instagram_username = "goproglenn"
 
 # Retrieve instagram photos as array
-photos = Gramscraper.scraper(instagram_username)
+photos = Gramscraper.scrape(instagram_username)
 ```
 
 ## Retrieving latest instagram post
 Posts are sorted from newest to oldest so index 0 is the latest post.
 ```
-image_standard_res = photos[0][:standard_resolution]
-image_low_res = photos[0][:low_resolution]
-image_thumbnail = photos[0][:thumbnail]
-image_caption = photos[0][:caption]
+image_standard_res = photos.first[:standard_resolution]
+image_low_res = photos.first[:low_resolution]
+image_thumbnail = photos.first[:thumbnail]
+image_caption = photos.first[:caption]
 ```
 
 ## Looping through every post
