@@ -1,5 +1,5 @@
 # Gramscraper
-A simple instagram scraping gem which retrieves all your photos in instagram.
+A simple instagram scraping gem which retrieves all your photos from instagram.
 
 ## Install
 ```
