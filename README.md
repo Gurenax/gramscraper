@@ -8,6 +8,7 @@ gem install gramscraper
 ```
 or in Gemfile
 ```
+gem 'httparty'
 gem 'gramscraper'
 ```
 
