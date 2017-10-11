@@ -2,18 +2,18 @@
 A simple instagram scraping gem which retrieves all your photos from instagram.
 
 ## Install
-```
+```ruby
 gem install httparty
 gem install gramscraper
 ```
 or in Gemfile
-```
+```ruby
 gem 'httparty'
 gem 'gramscraper'
 ```
 
 ## Basic Usage
-```
+```ruby
 require('gramscraper')
 
 # Change this to your instagram username
@@ -25,7 +25,7 @@ photos = Gramscraper.scrape(instagram_username)
 
 ## Retrieving latest instagram post
 Posts are sorted from newest to oldest so index 0 is the latest post.
-```
+```ruby
 image_standard_res = photos.first[:standard_resolution]
 image_low_res = photos.first[:low_resolution]
 image_thumbnail = photos.first[:thumbnail]
@@ -33,7 +33,7 @@ image_caption = photos.first[:caption]
 ```
 
 ## Looping through every post
-```
+```ruby
 photos.each do |photo|
     image_standard_res = photo[:standard_resolution]
     image_low_res = photo[:low_resolution]
@@ -43,7 +43,7 @@ end
 ```
 
 ## Rails (erb)
-```
+```ruby
 <% photos.each do |photo| =>
     <%= image_tag photo[:standard_resolution] %>
     <%= image_tag photo[:low_resolution] %>
