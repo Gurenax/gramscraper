@@ -1,56 +1,48 @@
 require 'httparty'
 
+# Gramscraper
 class Gramscraper
-    
-    def self.scrape(username)
-        # Base URL for instagram media
-        base_url = "https://www.instagram.com/#{username}/media"
+  def self.scrape(access_token, username="self")
+    # Base URL for instagram media
+    base_url = "https://api.instagram.com/v1/users/#{username}/media/recent/?access_token=#{access_token}"
 
-        # Initialise the url (without max_id token)
-        url = base_url
+    # Initialise the url (without max_id token)
+    url = base_url
 
-        # Initialise instagram array
-        instagram = Array.new
+    # Initialise instagram array
+    instagram = []
 
-        while true    
-            # Use HTTParty to retrieve the JSON response
-            page = HTTParty.get(url).parsed_response
+    # Use HTTParty to retrieve the JSON response
+    page = HTTParty.get(url).parsed_response
 
-            # Reset last_id
-            last_id = ""
-            
-            page["items"].each do |page_item|
+    # Reset last_id
+    last_id = ''
+    page['data'].each do |page_item|
+      # Post ID
+      last_id = page_item['id']
 
-                # Post ID
-                last_id = page_item["id"]
+      # Image Caption
+      caption = page_item['caption']['text'] unless page_item['caption'].nil?
 
-                # Image Caption
-                caption = page_item["caption"]["text"] unless page_item["caption"].nil?
+      # Get images in every resolution available
+      unless page_item['images'].nil?
+        thumbnail = page_item['images']['thumbnail']['url']
+        low_resolution = page_item['images']['low_resolution']['url']
+        standard_resolution = page_item['images']['standard_resolution']['url']
+      end
 
-                # Get images in every resolution available
-                thumbnail = page_item["images"]["thumbnail"]["url"] unless page_item["images"].nil?
-                low_resolution = page_item["images"]["low_resolution"]["url"] unless page_item["images"].nil?
-                standard_resolution = page_item["images"]["standard_resolution"]["url"] unless page_item["images"].nil?
+      # Copy data to hash
+      instagram_item = {
+        last_id: last_id,
+        caption: caption,
+        thumbnail: thumbnail,
+        low_resolution: low_resolution,
+        standard_resolution: standard_resolution,
+      }
 
-                # Copy data to hash
-                instagram_item = {
-                    :last_id => last_id, :caption => caption, :thumbnail => thumbnail, :low_resolution => low_resolution, :standard_resolution => standard_resolution,
-                }
-
-                # Add instagram item hash to array
-                instagram << instagram_item
-            end
-
-            # If there are more photos to scraper, capture the last_id and use it as token to ?max_id=
-            if page["more_available"]==true
-                next_page_token = "/?max_id=#{last_id}"     # e.g. /?max_id=1537732482693479519_54429723
-                url = base_url + next_page_token
-            
-            # Else there are no more photos so end the loop
-            else
-                break
-            end
-        end
-        instagram
+      # Add instagram item hash to array
+      instagram << instagram_item
     end
+    instagram
+  end
 end
