@@ -1,5 +1,5 @@
 # Gramscraper [![Gem Version](https://badge.fury.io/rb/gramscraper.svg)](https://badge.fury.io/rb/gramscraper) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-A simple gem for to retriev your recent photos from your Instagram.
+A simple gem to retrieve your recent photos from your Instagram.
 
 ## Major update (v1.0.1)
 - Instagram no longer supports the public media endpoint (https://instagram.com/username/media) which does not require an API client key or Access token.
