@@ -1,10 +1,10 @@
 # Gramscraper [![Gem Version](https://badge.fury.io/rb/gramscraper.svg)](https://badge.fury.io/rb/gramscraper) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-A simple instagram scraping gem which retrieves recent photos from your instagram.
+A simple gem for to retriev your recent photos from your Instagram.
 
-## Major update
-- Instagram no longer supports the public media endpoint (https://instagram.com/username/media).
-- As such, I am forced to use the API (which is actually the right way to do it).
-- Please note that to use this gem, you need to have a valid access token from instagram. The instructions can be found here (https://www.instagram.com/developer/authentication/). Look for Client-Side (Implicit) Authentication. That is what you need to get this gem working. However, I will put some of my notes below to guide you in getting the access token.
+## Major update (v1.0.1)
+- Instagram no longer supports the public media endpoint (https://instagram.com/username/media) which does not require an API client key or Access token.
+- As such, I am forced to use the API (which is the right way to get the photos from your instagram account).
+- Please note that to use this gem, you need to have a valid access token from instagram. The instructions can be found here (https://www.instagram.com/developer/authentication/). Look for Client-Side (Implicit) Authentication. It is what you need to get this gem working. However, to assist you in getting the access token, I will put some of my notes below anyway.
 
 ## Registering for an Instagram access token
 1. Go to (https://www.instagram.com/developer/)
@@ -29,17 +29,21 @@ A simple instagram scraping gem which retrieves recent photos from your instagra
 
 
 ## Installing the Gem
+The only dependency of this project is HTTParty.
+
 ```ruby
 gem install httparty
 gem install gramscraper
 ```
-or in Gemfile
+or in your Gemfile
 ```ruby
 gem 'httparty'
 gem 'gramscraper'
 ```
 
 ## Basic Usage
+Using gramscraper is simple, just follow the instructions below.
+
 ```ruby
 require('gramscraper')
 
@@ -50,7 +54,7 @@ access_token = "1234567890"
 instagram_username = "goproglenn"
 
 # Retrieve instagram photos as array
-# (For ruby, just run the method as such)
+# (For ruby, just run the method like so)
 # (For rails, this can be placed in your model or controller)
 photos = Gramscraper.scrape(access_token, instagram_username)
 ```
