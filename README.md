@@ -59,8 +59,8 @@ instagram_username = "goproglenn"
 photos = Gramscraper.scrape(access_token, instagram_username)
 ```
 
-## Retrieving latest instagram post
-Posts are sorted from newest to oldest so index 0 is the latest post.
+## Retrieving your most recent photo
+Photos are sorted from newest to oldest so index 0 is the most recent photo.
 ```ruby
 image_standard_res = photos.first[:standard_resolution]
 image_low_res = photos.first[:low_resolution]
@@ -68,7 +68,8 @@ image_thumbnail = photos.first[:thumbnail]
 image_caption = photos.first[:caption]
 ```
 
-## Looping through every post
+## Looping through your recent photos
+Instagram will only retrieve the last 20 photos you posted (unless they change it otherwise). This is why I highly recommend that you store the data you get from this gem your database.
 ```ruby
 photos.each do |photo|
   image_standard_res = photo[:standard_resolution]
@@ -79,6 +80,7 @@ end
 ```
 
 ## Rails (in your erb file)
+This is how you display the photos in your View.
 ```ruby
 <% photos.each do |photo| %>
   <%= image_tag photo[:standard_resolution] %>
