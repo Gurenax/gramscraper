@@ -6,6 +6,9 @@ A simple gem to retrieve your recent photos from your Instagram.
 - As such, I am forced to use the API (which is the right way to get the photos from your instagram account).
 - Please note that to use this gem, you need to have a valid access token from instagram. The instructions can be found here (https://www.instagram.com/developer/authentication/). Look for Client-Side (Implicit) Authentication. It is what you need to get this gem working. However, to assist you in getting the access token, I will put some of my notes below anyway.
 
+## If you are looking for Gramscraper for JavaScript
+https://github.com/Gurenax/gramscraper-javascript
+
 ## Registering for an Instagram access token
 1. Go to (https://www.instagram.com/developer/)
 2. Click Register Your Application
