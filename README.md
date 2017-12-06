@@ -1,4 +1,4 @@
-# Gramscraper [![Gem Version](https://badge.fury.io/rb/gramscraper.svg)](https://badge.fury.io/rb/gramscraper) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Gramscraper [![Gem Version](https://badge.fury.io/rb/gramscraper.svg)](https://badge.fury.io/rb/gramscraper) [![Gem](https://img.shields.io/gem/dt/gramscraper.svg)]() [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 A simple gem to retrieve your recent photos from your Instagram.
 
 ## Major update (v1.0.1)
